@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<!--
+ responsive.htm, An html page that is responsive according with screen size
+ Copyright (C) 2016  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program; if not, write to the Free Software
+ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>responsive test</title>
+
+<style>
+	/* A simple box model for <div> element */
+	.box {
+		border: 1px solid black;
+		padding: 15px;
+		vertical-align: top;
+	}
+
+	/* class "row:before" specification */
+	.row:before {
+		content: "[row]";
+		clear: both;
+		display: block;
+	}
+
+	/* class "row:after" specification */
+	.row:after {
+		content: "__[end row]__";
+		clear: both;
+		display: block;
+	}
+
+	/* Applied to all columns */
+	[class*="col-"] {
+		float: left;
+		margin: none;
+		padding-bottom: none;
+		padding: none;
+		border: none;
+		vertical-align: top;
+		max-width: 100%;
+		background: transparent;
+	}
+
+	/* responsive => For mobile phones: */
+	[class*="col-"] {
+		width: 100%;
+	}
+
+	/* responsive => For tablet: */
+	@media only screen and (min-width: 600px) {
+		.col-1 {width: 100%;}
+		.col-2 {width: 50%;}
+		.col-3 {width: 33.33%;}
+		.col-4 {width: 33.33%;}
+		.col-5 {width: 33.33%;}
+		.col-6 {width: 33.33%;}
+	}
+
+	/* responsive => For desktop: */
+	@media only screen and (min-width: 768px) {
+		.col-1 {width: 100%;}
+		.col-2 {width: 50%;}
+		.col-3 {width: 33.33%;}
+		.col-4 {width: 25%;}
+		.col-5 {width: 20%;}
+		.col-6 {width: 16.66%;}
+	}
+</style>
+
+<!-- menu script -->
+<script>
+
+/* nothing yet */
+
+</script>
+<!-- .menu script -->
+
+</head>
+
+<body>
+
+<!-- row -->
+<div class="row">
+
+<!-- col -->
+<div class="col-1">
+
+<div class="box" style="background: #ccccff">
+	<p align="left" valign="top">responsive page at 600 and 768 pixels
+ (width)</p>
+	<h1 align="center">HELLO WORLD!</h1>
+</div>
+
+</div>
+<!-- .col -->
+
+</div>
+<!-- .row -->
+
+<!-- row -->
+<div class="row">
+
+<!-- col -->
+<div class="col-1">
+
+<div style="border: 1px solid black; padding: none; margin: none">
+<nav>
+<ul id="main_menu">
+<li>Home</li>
+<li>page_a</li>
+	<ul>
+	<li>subpage_a_a</li>
+	<li>subpage_a_b</li>
+	</ul>
+</ul>
+</nav>
+</div>
+
+</div>
+<!-- .col -->
+
+</div>
+<!-- .row -->
+
+<!-- table for lateral fixed bar -->
+<table>
+
+<tr>
+
+<!-- lateral fixed bar column -->
+<td valign="top" width="15%">
+
+<div style="border: 1px solid black">
+This is the lateral fixed bar that was implemented with a traditional
+ "table" and it can't be affected by the div's.
+<br>
+The div element couldn't be used in this case because it isn't absolute
+ compared with the other div's, not matter if the div is over the others.
+</div>
+
+</td>
+<!-- .lateral fixed bar column -->
+
+<td>
+
+<!-- row -->
+<div class="row">
+
+<!-- col -->
+<div class="col-2">
+
+<div class="box">
+	<h1 align="center">Title 1</h1>
+This box is at column 1/2 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-2">
+
+<div class="box">
+	<h1 align="center">Title 2</h1>
+This box is at column 2/2 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+</div>
+<!-- .row -->
+
+<!-- row -->
+<div class="row">
+
+<!-- col -->
+<div class="col-3">
+
+<div class="box">
+	<h1 align="center">Title 1</h1>
+This box is at column 1/3 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-3">
+
+<div class="box">
+	<h1 align="center">Title 2</h1>
+This box is at column 2/3 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-3">
+
+<div class="box">
+	<h1 align="center">Title 3</h1>
+This box is at column 3/3 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+</div>
+<!-- .row -->
+
+<!-- row -->
+<div class="row">
+
+<!-- col -->
+<div class="col-4">
+
+<div class="box">
+	<h1 align="center">Title 1</h1>
+This box is at column 1/4 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-4">
+
+<div class="box">
+	<h1 align="center">Title 2</h1>
+This box is at column 2/4 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-4">
+
+<div class="box">
+	<h1 align="center">Title 3</h1>
+This box is at column 3/4 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+<!-- col -->
+<div class="col-4">
+
+<div class="box">
+	<h1 align="center">Title 4</h1>
+This box is at column 4/4 and should
+ be wrapped if the size will be
+ smaller than 768 pixels.
+</div>
+
+</div>
+<!-- .col -->
+
+</div>
+<!-- .row -->
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>
