@@ -2,11 +2,11 @@
 # Copyright (C) 2016  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
 
 #   What is it?
-# This code gives a tool that parses options and/or mandatory arguments from
+# This code gives a tool that parses options and mandatory arguments from
 # command line. It aims to be easy, simple and powerful.
 # Enjoy it :-)
 #
-# In this example we have two mandatory arguments, one before and another
+# In _this_example_ we have two mandatory arguments, one before and another
 # after options. If you want to use only one mandatory argument after/before
 # options or you don't want to use any mandatory arguments simply remove
 # code between
@@ -48,8 +48,8 @@ shift # ok, we've already got your name!
 
 #        POST-OPTIONS argument
 # if there is nothing to be parsed, print usage and return 1.
-# >> this only makes sense in case where there is a mandatory
-#    post-options argument, and this is our case
+# >> this only makes sense in case where there is a mandatory post-options
+#    argument, and this is our case!
 if [ -z "$1" ]; then
 	print_usage
 fi
@@ -59,7 +59,7 @@ unset opt_pwd
 unset opt_print
 unset    optval_print
 
-# No effective action should happen in option parsing
+# no effective action should happen in option parsing
 while [ 0 ]; do
 	case "$1" in
 	"-d"|"--pwd")
@@ -68,7 +68,6 @@ while [ 0 ]; do
 	"-p"|"--print")
 		if [ -z "$2" ]; then
 			print_usage
-			exit 2
 		fi
 		opt_print=1
 		optval_print="$2"
@@ -79,7 +78,7 @@ while [ 0 ]; do
 	;;
 	esac
 
-	shift # Each iteration we assume at least one option was parsed
+	shift # each iteration we assume at least one option was parsed
 done
 
 #        POST-OPTIONS argument
