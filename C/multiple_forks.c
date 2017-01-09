@@ -1,3 +1,10 @@
+/*
+ * Copyright (C) 2016,2017  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
+ * under the terms of the GNU General Public License (see LICENSE file)
+ *
+ * create X forks and kill them
+ */
+
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,7 +49,7 @@ main (int argc, char **argv) {
 
 			printf("[%d] child ", getpid());
 			if (child_killed)
-				printf("has killed by parent\n");
+				printf("has been killed by parent\n");
 			else
 				printf("has ended by itself\n");
 

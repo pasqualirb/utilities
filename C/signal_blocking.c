@@ -1,3 +1,10 @@
+/*
+ * Copyright (C) 2016,2017  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
+ * under the terms of the GNU General Public License (see LICENSE file)
+ *
+ * block/unblock signals
+ */
+
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>

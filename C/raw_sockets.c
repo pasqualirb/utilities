@@ -1,4 +1,9 @@
-/* A server that receives a packet and print its content using raw sockets */
+/*
+ * Copyright (C) 2016,2017  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
+ * under the terms of the GNU General Public License (see LICENSE file)
+ *
+ * a server that receives a packet and print its content using raw sockets
+ */
 
 #include <arpa/inet.h>
 #include <netinet/in.h>

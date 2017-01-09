@@ -1,5 +1,6 @@
 #!/bin/bash
 # Copyright (C) 2016  Ricardo Biehl Pasquali <rbpoficial@gmail.com>
+# under the terms of the GNU General Public License (see LICENSE file)
 
 # Based in `makepkg` utilitary made by Patrick Volkerding
 # to the Slackware Linux
