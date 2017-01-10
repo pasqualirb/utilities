@@ -15,9 +15,13 @@
 #           tasks
 #           cpuset.cpus
 #           ...
-# a process can belong to only one cpuset at a time
+#
+# NOTES:
+# -> a process can belong to only one cpuset at a time
+# -> cpusets have higher precedence compared to sched_setaffinity, mbind etc.
+#    (it means cpuset placement is always enforced)
+# -> for further details, read `man 7 cpuset`
 
-unset victim_pid
 
 case "$1" in
 "-h"|"--help")
@@ -30,12 +34,7 @@ case "$1" in
 	echo
 	echo "<pid>    a valid process id"
 	echo "--help   print help"
-	echo "undo     (not available yet) undo changes made by this script"
 	exit 0
-;;
-"undo")
-	echo "OP not available"
-	exit 1
 ;;
 *)
 	victim_pid="$1"
@@ -54,11 +53,21 @@ fi
 
 
 #
+# check if system support cpusets
+#
+
+if ! grep "cpuset" /proc/filesystems >/dev/null; then
+	echo "cpusets aren't supported, exiting"
+	exit 1
+fi
+
+
+#
 # access cpuset mountpoint
 #
 
-cpuset_mountpoint="$(cat /proc/mounts | grep "cpuset" | cut -d " " -f 2)"
-
+# check if cpuset is already mounted  --  if it's not, try to mount it
+cpuset_mountpoint="$(grep -m 1 "cpuset" /proc/mounts | cut -d " " -f 2)"
 if [[ -z "$cpuset_mountpoint" ]]; then
 	echo "cpuset directory is not mounted, trying to mount it"
 
@@ -74,6 +83,7 @@ if [[ -z "$cpuset_mountpoint" ]]; then
 	echo "    \"${cpuset_mountpoint}\""
 fi
 
+# make our current working directory (CWD) the cpuset mountpoint
 cd "$cpuset_mountpoint"
 if (( $? != 0 )); then
 	echo "error while accessing cpuset mount directory:"
