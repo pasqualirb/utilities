@@ -30,10 +30,10 @@ case "$1" in
 ;&
 "")
 	echo
-	echo "  usage: cmd [<pid>|--help|undo]"
+	echo "  usage: cmd [<pid>|--help]"
 	echo
-	echo "<pid>    a valid process id"
-	echo "--help   print help"
+	echo "<pid>       a valid process id"
+	echo "-h|--help   print help"
 	exit 0
 ;;
 *)
