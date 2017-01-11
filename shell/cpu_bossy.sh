@@ -157,7 +157,7 @@ if (( $victim_cpu == 1 )); then
 	echo "0" > "./${other_cpuset}/cpuset.cpus"
 else
 	# we have a range of cpus available for other tasks
-	echo "0-$(( $victim_cpu - 1 ))"
+	echo "0-$(( $victim_cpu - 1 ))" > "./${other_cpuset}/cpuset.cpus"
 fi
 
 for task in `cat tasks`; do
