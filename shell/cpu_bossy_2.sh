@@ -178,7 +178,7 @@ case "$1" in
 	echo
 	echo "<pid>       a valid process id"
 	echo "-h|--help   print help"
-	echo "-u|--undo   (not available yet) undo changes made by this script"
+	echo "-u|--undo   undo changes made by this script"
 	exit 0
 ;;
 "-u"|"--undo")
