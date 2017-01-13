@@ -16,13 +16,13 @@
 
 script_name="$0"
 
-print_usage() {
+function print_usage () {
 	echo "usage: $script_name <your_name> [OPTIONS] <your_age>"
 	echo "  try $script_name -h"
 	exit 1
 }
 
-print_help() {
+function print_help () {
 	echo
 	echo "    usage: $script_name <your_name> [OPTIONS] <your_age>"
 	echo
@@ -34,13 +34,13 @@ print_help() {
 }
 
 # help option should be always the first
-if [ "$1" = "-h" -o "$1" = "--help" ]; then
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
 	print_help
 fi
 
 #        PRE-OPTIONS argument
 # here we get pre-options argument
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
 	print_usage
 fi
 your_name="$1"
@@ -51,23 +51,23 @@ shift # ok, we've already got your name!
 # if there is nothing to be parsed, print usage and return 1.
 # >> this only makes sense in case where there is a mandatory post-options
 #    argument, and this is our case!
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
 	print_usage
 fi
 #        POST-OPTIONS argument
 
 unset opt_pwd
 unset opt_print
-unset    optval_print
+unset optval_print
 
 # no effective action should happen in option parsing
-while [ 0 ]; do
+while (( 1 )); do
 	case "$1" in
 	"-d"|"--pwd")
 		opt_pwd=1
 	;;
 	"-p"|"--print")
-		if [ -z "$2" ]; then
+		if [[ -z "$2" ]]; then
 			print_usage
 		fi
 		opt_print=1
@@ -84,7 +84,7 @@ done
 
 #        POST-OPTIONS argument
 # here we get post-options argument
-if [ -z "$1" ]; then
+if [[ -z "$1" ]]; then
 	print_usage
 fi
 your_age="$1"
@@ -98,12 +98,12 @@ shift
 echo "Hello $your_name!"
 echo "  I think you put something else rather than your age!"
 echo "  But here it is: $your_age"
-if [ "$opt_pwd" = 1 ]; then
+if (( $opt_pwd )); then
 	echo "  Current directory is:  $(pwd)"
 fi
-if [ "$opt_print" = 1 ]; then
+if (( $opt_print )); then
 	echo -n "  You has input: "
-	if [ -z "$optval_print" ]; then
+	if [[ -z "$optval_print" ]]; then
 		echo "(nothing)"
 	else
 		echo "$optval_print"
