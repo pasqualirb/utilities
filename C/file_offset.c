@@ -57,13 +57,12 @@ get_line_of(char *retstr, size_t retstr_size, off_t offset, int fd)
 		ret = -1;
 		goto _go_end;
 	}
-	for (i = 0; i < len; i++) {
-		if (buf[i] == '\n' || buf[i] == EOF) {
-			line_end = offset + i;
+	for (i = 0; i < len; i++)
+		if (buf[i] == '\n' || buf[i] == EOF)
 			break;
-		}
-	}
-	if (! line_end) {
+	if (i < len)
+		line_end = offset + i;
+	else {
 		ret = -1;
 		goto _go_end;
 	}
@@ -75,12 +74,11 @@ get_line_of(char *retstr, size_t retstr_size, off_t offset, int fd)
 		ret = -1;
 		goto _go_end;
 	}
-	for (i = backward - 1; i >= 0; i--) {
-		if (buf[i] == '\n') {
-			line_begin = (offset - backward) + i + 1;
+	for (i = backward - 1; i >= 0; i--)
+		if (buf[i] == '\n')
 			break;
-		}
-	}
+	if (i >= 0)
+		line_begin = (offset - backward) + i + 1;
 
 	if (line_end - line_begin >= retstr_size) {
 		ret = -1;
