@@ -13,7 +13,7 @@
 #include <unistd.h>
 
 /* used by child to determine whether it was killed by parent or by itself */
-int child_killed;
+volatile sig_atomic_t child_killed;
 
 /* SIGUSR1 handler */
 void
