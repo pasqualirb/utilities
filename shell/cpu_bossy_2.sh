@@ -3,7 +3,7 @@
 # under the terms of the GNU General Public License (see LICENSE file)
 
 # put all processes except victim_pid (pid argument to this script) to run in a
-# different cpu  --  victim_pid is bossy of cpu :-)
+# different cpu  --  victim_pid is bossy on cpu :-)
 #
 # about cpuset mountpoint:
 #
@@ -261,6 +261,12 @@ if ! cpuset_do_transfer_tasks "$other_cpuset" "."; then
 	echo "error while transferring tasks to other cpuset, exiting"
 	cpuset_do_remove "$victim_cpuset"
 	cpuset_do_remove "$other_cpuset"
+	exit 1
 fi
+
+# print the cpu we've bonded on
+# for example, if a program wants to know if we were successful and which cpu we
+# have bonded on, it just need to check the string 'cpu_bossy_bonded_cpu'  :-)
+echo "cpu_bossy_bonded_cpu = $victim_cpu"
 
 # We are ready ;-)
