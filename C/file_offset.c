@@ -132,15 +132,12 @@ get_offset_of(off_t *retoff, char *pattern, int fd)
 
 		for (i = 0; i < len; i++) {
 			if (pattern[pattern_idx] == buf[i]) {
-				/* check if we are ready */
+				/* check if we're done */
 				if (pattern[pattern_idx + 1] == '\0') {
 					/*
-					 * look at the end of 'while (1)' loop:
-					 *   *retoff += len
-					 * Each read() we don't find the pattern
-					 * we increment *retoff -- and now to
-					 * get final result we need only to do
-					 * this:
+					 * add together the current position in
+					 * the file + current position in the
+					 * buffer - the word size
 					 */
 					*retoff += i - pattern_idx;
 					goto _go_end;
@@ -151,7 +148,9 @@ get_offset_of(off_t *retoff, char *pattern, int fd)
 				pattern_idx = 0;
 		}
 
-		/* we didn't find pattern yet, let's increment our return offset
+		/*
+		 * we hasn't found pattern yet, let's increment our return
+		 * offset
 		 */
 		*retoff += len;
 	}
