@@ -6,6 +6,8 @@
  */
 
 /*
+ * How did I learn how to make this allocator?  In this site from IBM:
+ * <https://www.ibm.com/developerworks/aix/tutorials/au-memorymanager/>
  * How the allocator works?  Basically, we maintain a list of free chunks. Read
  * below to understand the details.
  *
