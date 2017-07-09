@@ -5,6 +5,9 @@
  * A fixed-size memory allocator
  */
 
+#ifndef ALLOCATOR_H
+#define ALLOCATOR_H
+
 /*
  * when a chunk is free it becomes a `struct free_chunk`, so we can maintain a
  * single linked list of free chunks (a free_list).
@@ -48,3 +51,5 @@ allocator_clean_up(struct memory *mem);
 int
 allocator_init(struct memory *mem, unsigned long object_size,
 	       unsigned long initial_size, unsigned long auto_expand_factor);
+
+#endif /* ALLOCATOR_H */
