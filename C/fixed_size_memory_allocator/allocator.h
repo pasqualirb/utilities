@@ -47,4 +47,4 @@ allocator_clean_up(struct memory *mem);
 
 int
 allocator_init(struct memory *mem, unsigned long object_size,
-	       unsigned long initial_size, int auto_expand_factor);
+	       unsigned long initial_size, unsigned long auto_expand_factor);
